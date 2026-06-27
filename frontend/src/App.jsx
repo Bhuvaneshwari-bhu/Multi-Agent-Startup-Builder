@@ -16,7 +16,7 @@ function App() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
-
+const API_URL = import.meta.env.VITE_API_URL;
 async function analyzeStartup() {
 
   if (!startupIdea.trim()) {
@@ -31,7 +31,7 @@ async function analyzeStartup() {
   try {
 
       const response = await fetch(
-          "http://127.0.0.1:8000/analyze",
+          `${API_URL}/analyze`,
           {
               method: "POST",
 
@@ -210,7 +210,7 @@ async function analyzeStartup() {
               <button
                 onClick={() =>
                   window.open(
-                    "http://localhost:8000/download-pdf",
+                    `${API_URL}/download-pdf`,
                     "_blank"
                   )
                 }
